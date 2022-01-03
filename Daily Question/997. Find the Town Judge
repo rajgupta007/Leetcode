@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int findJudge(int n, vector<vector<int>>& trust) {
+        int sz = trust.size();
+        if(sz<n-1){return -1;}
+        int arr[1001]={0};
+        int ans = -1;
+        for(int i = 0; i<trust.size(); i++)
+        {
+            arr[trust[i][0]]++;
+            
+        }
+        
+        for(int i=1 ;i<=n ;i++)
+        {
+            if(arr[i]==0){ans=i;break;}
+        }
+        //cout<<ans;
+        if(ans==-1){return -1;}
+        int count = 0;
+        for(int i = 0; i<trust.size(); i++)
+        {
+            if(trust[i][1] == ans){count++;} 
+        }
+        if(count == n-1){return ans;}
+        return -1;
+         
+    }
+};
