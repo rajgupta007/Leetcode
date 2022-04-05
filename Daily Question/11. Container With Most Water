@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        // 1.  solution using two pointers 
+        // 2.  keep a pointer l at starting index
+        // 3.  ans a r pointer at end of given array
+        // 4.  loop till l < r
+        // 5.  calculate max water it can hold with current l and r
+        // 6.  always take maximum of total water contained
+        // 7.  shrink the pointer which has less in value than other
+        // 8.  At last return the ans
+        int ans = 0;
+        int s = height.size();
+        int l = 0 , r = s-1;                //  2  , 3
+        while(l < r)                        //  4
+        {
+            ans = max(ans, min(height[l],height[r])*(r-l));    //  5
+            if(height[l] < height[r]){l++;}                    //  7
+            else                                               //  7
+                r--;                                           //  7
+        }
+        return ans;                          // 8 
+    }
+};
